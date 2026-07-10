@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Partners Commercial Cleaning</title>
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: #000;
+    overflow: hidden;
+  }
+  video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+  #gate {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #14224f;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    z-index: 10;
+  }
+  #gate p {
+    color: #f5f0e6;
+    font-size: 16px;
+    margin-bottom: 16px;
+  }
+  #gate input {
+    padding: 10px 14px;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    outline: none;
+    width: 220px;
+    text-align: center;
+  }
+  #gate button {
+    margin-top: 12px;
+    padding: 10px 24px;
+    font-size: 15px;
+    border: none;
+    border-radius: 6px;
+    background: #f5f0e6;
+    color: #14224f;
+    cursor: pointer;
+    font-weight: 600;
+  }
+  #gate #error {
+    color: #e79a9a;
+    font-size: 14px;
+    margin-top: 10px;
+    height: 16px;
+  }
+</style>
+</head>
+<body>
+  <div id="gate">
+    <p>This page is password protected.</p>
+    <input type="password" id="pw" placeholder="Enter password" autofocus>
+    <button onclick="checkPw()">Enter</button>
+    <div id="error"></div>
+  </div>
+
+  <video src="video.mp4" poster="video-poster.jpg" loop playsinline controls></video>
+
+  <script>
+    const PASSWORD = "lovepeople";
+    function checkPw() {
+      const val = document.getElementById('pw').value;
+      if (val === PASSWORD) {
+        document.getElementById('gate').style.display = 'none';
+      } else {
+        document.getElementById('error').textContent = 'Incorrect password.';
+      }
+    }
+    document.getElementById('pw').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') checkPw();
+    });
+  </script>
+</body>
+</html>
